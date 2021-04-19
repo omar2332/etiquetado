@@ -28,7 +28,7 @@ class programa():
 			aws_secret_access_key=self.data['awssecretaccesskey'])
 
 		
-		self.my_bucket = s3.Bucket('img-inference')
+		self.my_bucket = s3.Bucket(self.data['bucket'])
 		self.lista = self.data['lista']
 		self.indice = self.data['indice']
 		self.lista_etiquetas = self.data['lista_etiquetas']
@@ -97,7 +97,7 @@ class programa():
 		self.back.pack(side='left')
 
 		self.checkbox_value = tk.BooleanVar(self.ventana)
-		self.cambia  = tk.Checkbutton(self.ventana,text="Edificio?",variable=self.checkbox_value)
+		self.cambia  = tk.Checkbutton(self.ventana,text="¿Torre?",variable=self.checkbox_value)
 
 
 
