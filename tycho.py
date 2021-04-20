@@ -64,7 +64,7 @@ class programa():
 				json.dump(self.data, file)
 				
 
-		print(self.lista_etiquetas[self.indice])
+		print("Actual",self.lista_etiquetas[self.indice])
 		print('indice: ', self.indice , " de ", self.total)
 
 
@@ -128,7 +128,7 @@ class programa():
 
 			if self.checkbox_value.get():
 				self.lista_etiquetas[self.indice-1][1] = 1
-				print("Marcado",self.lista_etiquetas[self.indice])
+				print("Marcado",self.lista_etiquetas[self.indice-1])
 				self.cambia.invoke()
 			else:
 				self.lista_etiquetas[self.indice-1][1] = 0
