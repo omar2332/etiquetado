@@ -118,27 +118,23 @@ class programa():
 		self.ventana.mainloop()
 
 	def next_event(self,event = None):
-		self.indice +=1
+		if self.checkbox_value.get():
+			self.lista_etiquetas[self.indice][1] = 1
+			print("Marcado",self.lista_etiquetas[self.indice])
+			self.cambia.invoke()
+		else:
+			self.lista_etiquetas[self.indice][1] = 0
 
+		self.indice +=1
+		print("Actual",self.lista_etiquetas[self.indice])
 		if self.indice < len(self.lista):
 			self.my_bucket.download_file(Key=self.lista[self.indice], Filename=self.path)
 			self.img2 = ImageTk.PhotoImage(Image.open(self.path))
 			self.panel.configure(image=self.img2)
 			self.panel.image = self.img2
 
-			if self.checkbox_value.get():
-				self.lista_etiquetas[self.indice-1][1] = 1
-				print("Marcado",self.lista_etiquetas[self.indice-1])
-				self.cambia.invoke()
-			else:
-				self.lista_etiquetas[self.indice-1][1] = 0
-
-			print("Actual",self.lista_etiquetas[self.indice])
+			
 			print('indice: ', self.indice , " de ", self.total)
-
-
-
-
 		else:
 			self.indice = len(self.lista)-1
 
