@@ -146,7 +146,7 @@ class programa():
 	def back_event(self,event = None):
 		self.indice -=1
 
-		print(self.indice)
+	
 		if self.indice > -1:
 			self.my_bucket.download_file(Key=self.lista[self.indice], Filename=self.path)
 			self.img2 = ImageTk.PhotoImage(Image.open(self.path))
