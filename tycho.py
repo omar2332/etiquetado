@@ -20,7 +20,7 @@ class programa():
 			self.data = json.load(file)
 
 
-
+		
 		s3 = boto3.resource(
 			service_name='s3',
 			region_name='us-east-1',
@@ -32,6 +32,7 @@ class programa():
 		self.lista = self.data['lista']
 		self.indice = self.data['indice']
 		self.lista_etiquetas = self.data['lista_etiquetas']
+		self.total = len(self.lista_etiquetas)
 	
 
 		if self.data['existe']==False:
@@ -64,7 +65,7 @@ class programa():
 				
 
 		print(self.lista_etiquetas[self.indice])
-		print('indice: ', self.indice )
+		print('indice: ', self.indice , " de ", self.total)
 
 
 
@@ -116,7 +117,7 @@ class programa():
 		self.ventana.geometry("{}x{}+{}+{}".format(windowWidth,windowHeight,positionRight, positionDown))
 		self.ventana.mainloop()
 
-	def next_event(self,event):
+	def next_event(self,event = None):
 		self.indice +=1
 
 		if self.indice < len(self.lista):
@@ -126,13 +127,14 @@ class programa():
 			self.panel.image = self.img2
 
 			if self.checkbox_value.get():
-				self.lista_etiquetas[self.indice][1] = 1
+				self.lista_etiquetas[self.indice-1][1] = 1
+				print("Marcado",self.lista_etiquetas[self.indice])
 				self.cambia.invoke()
 			else:
-				self.lista_etiquetas[self.indice][1] = 0
+				self.lista_etiquetas[self.indice-1][1] = 0
 
-			print(self.lista_etiquetas[self.indice])
-			print('indice: ', self.indice )
+			print("Actual",self.lista_etiquetas[self.indice])
+			print('indice: ', self.indice , " de ", self.total)
 
 
 
@@ -141,7 +143,7 @@ class programa():
 			self.indice = len(self.lista)-1
 
 
-	def back_event(self,event):
+	def back_event(self,event = None):
 		self.indice -=1
 
 		print(self.indice)
@@ -152,14 +154,15 @@ class programa():
 			self.panel.image = self.img2
 			if self.checkbox_value.get():
 				self.cambia.invoke()
-			print('indice: ', self.indice )
+			print("Actual",self.lista_etiquetas[self.indice])
+			print('indice: ', self.indice , " de ", self.total)
 				
 
 		else:
 			self.indice =0
 
 
-	def marcar(self,event):
+	def marcar(self,event = None):
 		self.cambia.invoke()
 			
 
