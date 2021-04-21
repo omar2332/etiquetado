@@ -61,6 +61,7 @@ class programa():
 			self.data['existe']=True
 			self.data['lista_etiquetas']=self.lista_etiquetas
 			self.data['lista']=self.lista 
+			self.total = len(self.lista_etiquetas)
 			
 
 			with open('info.json', 'w') as file:
