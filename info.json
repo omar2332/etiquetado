@@ -1,7 +1,7 @@
 {
-    "awsaccesskeyid": "CredentialsCredentialsCredentials",
-    "awssecretaccesskey": "Credentials+Credentials+Credentials",
-    "indice": 62,
+    "awsaccesskeyid": "Credentials",
+    "awssecretaccesskey": "Credentials",
+    "indice": 65,
     "archivo": "ameca",
     "existe": true,
     "bucket": "img-inference",

@@ -59,6 +59,9 @@ class programa():
 				writer.writerows(list_temp)
 
 			self.data['existe']=True
+			self.data['lista_etiquetas']=self.lista_etiquetas
+			self.data['lista']=self.lista 
+			
 
 			with open('info.json', 'w') as file:
 				json.dump(self.data, file)
