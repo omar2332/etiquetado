@@ -8,7 +8,7 @@ import csv
 
 
 
-
+#Es una beta del programa original
 	
 class programa():
 
@@ -61,7 +61,7 @@ class programa():
 			self.data['existe']=True
 			self.data['lista_etiquetas']=self.lista_etiquetas
 			self.data['lista']=self.lista 
-			self.total = len(self.lista_etiquetas)
+			self.total = len(self.lista_etiquetas)	
 			
 
 			with open('info.json', 'w') as file:
@@ -69,7 +69,7 @@ class programa():
 				
 
 		print("Actual",self.lista_etiquetas[self.indice])
-		print('indice: ', self.indice , " de ", self.total)
+		print('indice: ', self.indice+1 , " de ", self.total)
 
 
 
@@ -130,16 +130,18 @@ class programa():
 			self.lista_etiquetas[self.indice][1] = 0
 
 		self.indice +=1
-		print("Actual",self.lista_etiquetas[self.indice])
-		if self.indice < len(self.lista):
+		
+		if self.indice < self.total:
+			print("Actual",self.lista_etiquetas[self.indice])
 			self.my_bucket.download_file(Key=self.lista[self.indice], Filename=self.path)
 			self.img2 = ImageTk.PhotoImage(Image.open(self.path))
 			self.panel.configure(image=self.img2)
 			self.panel.image = self.img2
 
 			
-			print('indice: ', self.indice , " de ", self.total)
+			print('indice: ', self.indice+1 , " de ", self.total)
 		else:
+
 			self.indice = len(self.lista)-1
 
 
@@ -155,7 +157,7 @@ class programa():
 			if self.checkbox_value.get():
 				self.cambia.invoke()
 			print("Actual",self.lista_etiquetas[self.indice])
-			print('indice: ', self.indice , " de ", self.total)
+			print('indice: ', self.indice+1 , " de ", self.total)
 				
 
 		else:
